@@ -22,6 +22,9 @@ Implement some standard functions and method such as:
 # Pre-requisites
     Java Runtime (1.8 or newer).
 
+# Wiki
+[Check out the wiki to get started](https://github.com/jsaasta/Froj/wiki)
+
 
 # Hello World
 ## The simplest way to get started:
@@ -48,7 +51,3 @@ Implement some standard functions and method such as:
   * Linux: `rm -f ./com/saasta/froj/*.class`
   * Windows(CMD): `del ./com/saasta/froj/*.class`
   * Windows(PowerShell): `Remove-Item ./com/saasta/froj/*.class`
-
-
-# Thank you
-Special thanks to [Robert Nystrom's book Crafting Interpreters](https://craftinginterpreters.com), as the book paved the way for Froj.
