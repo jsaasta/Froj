@@ -5,6 +5,9 @@ import com.jsaasta.froj.Interpreter;
 
 import java.util.List;
 
+/**
+ * @return Returns current time in nanoSeconds / 1000;
+ */
 public class Clock implements FrojCallable {
 
     @Override
@@ -14,7 +17,7 @@ public class Clock implements FrojCallable {
 
     @Override
     public Object call(Interpreter interpreter, List<Object> arguments) {
-        return (double) System.currentTimeMillis() / 1000.0;
+        return (double) System.nanoTime() / 1000.0;
     }
 
     @Override

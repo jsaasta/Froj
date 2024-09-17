@@ -1,4 +1,3 @@
+var string = fileReader("..eogm");
 
-
-
-print "Hello world!";
+print string;
