@@ -1,5 +1,9 @@
 package com.jsaasta.froj;
 
+import com.jsaasta.froj.stdlib.Clock;
+import com.jsaasta.froj.stdlib.Input;
+import com.jsaasta.froj.stdlib.Stdlib;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,23 +16,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     private Environment environment = globals;
 
     public Interpreter() {
-        globals.define("clock", new FrojCallable() {
-            @Override
-            public int arity() {
-                return 0;
-            }
-
-            @Override
-            public Object call(Interpreter interpreter, List<Object> arguments) {
-                return (double) System.currentTimeMillis() / 1000.0;
-            }
-
-            @Override
-            public String toString() {
-                return "<native fn>";
-            }
-
-        });
+        Stdlib.define().forEach(globals::define);
     }
 
     public void interpret(List<Stmt> statements) {
