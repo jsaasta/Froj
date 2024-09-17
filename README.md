@@ -28,7 +28,7 @@ Implement some standard functions and method such as:
 
 # Hello World
 ## The simplest way to get started:
-* [Download the .jar under releases](https://github.com/jsaasta/Froj/releases/tag/stable)
+* [Download the .jar under releases](https://github.com/jsaasta/Froj/releases)
 * Create file ``helloworld.froj`` with the contents below:
 
       print "Hello World";
