@@ -1,0 +1,109 @@
+class HelloParent {
+    welcome(){
+        print "Hello from Parent";
+    }
+}
+
+class HelloWorld < HelloParent {
+    init(helloString){
+        this.helloString = helloString;
+    }
+
+    welcome(){
+        super.welcome();
+        print this.helloString;
+    }
+}
+
+var hello = "Hello World!";
+var helloWorldObject = HelloWorld(hello);
+helloWorldObject.welcome();
+
+// Or just a simple:
+print "Hello World";
+
+// -----------------------------------------
+class Test {
+
+    init(aBoolean){
+        if(aBoolean){
+            print "in true";
+        } else {
+            print "in false";
+        }
+    }
+}
+
+Test(false);
+// ----------------------------------------
+
+function controlFlowTest(someValue){
+    if(someValue == "if"){
+        print "in " + someValue;
+    } else if(someValue == "else if") {
+        print "in " + someValue;
+    } else {
+        print "in 'else', because the value was: " + someValue;
+    }
+}
+
+controlFlowTest("if");
+controlFlowTest("else if");
+controlFlowTest("something else entirely");
+
+
+// ----------------------------------------
+function testWhile(){
+    var a = 0;
+    while(a < 10){
+        a = a+1;
+    }
+    return a;
+}
+
+function testFor() {
+    var a = "";
+    for(var i = 0; i < 10; i = i + 1){
+        a = a + "a";
+    }
+    return a;
+}
+print testWhile();
+print testFor();
+
+// ---------------------------------------
+function addTwoNumbers(a, b) {
+    return a + b;
+}
+
+function testCallBack(aFunction){
+    var a = 1;
+    var b = 2;
+
+    return aFunction(a, b);
+}
+
+print addTwoNumbers(4,5);
+print testCallBack(addTwoNumbers);
+
+// ---------------------------------------
+
+class Person {
+
+    init(name){
+        this.name = name;
+    }
+
+    myNameIs() {
+        print this.name;
+    }
+
+}
+var janne = Person("Janne");
+janne.name = "Janne";
+janne.otherName = "Totally Not Janne";
+janne.myNameIs();
+
+print janne.otherName;
+
+// ---------------------------------------
