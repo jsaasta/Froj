@@ -11,6 +11,7 @@ public class Stdlib {
         classes = new HashMap<>();
         classes.put("clock", new Clock());
         classes.put("input", new Input());
+        classes.put("fileReader", new FileReader());
     }
 
     public static Map<String, Object> define(){
