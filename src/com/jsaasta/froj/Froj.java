@@ -26,7 +26,7 @@ public class Froj {
 
     }
 
-    private void runFile(String path) throws IOException {
+    public void runFile(String path) throws IOException {
         try {
             byte[] bytes = Files.readAllBytes(Paths.get(path));
             run(new String(bytes, Charset.defaultCharset()));
