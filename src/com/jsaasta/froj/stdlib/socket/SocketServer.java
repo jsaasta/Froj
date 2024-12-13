@@ -14,6 +14,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class SocketServer implements FrojCallable {
     protected static BlockingQueue<String> messageQueue = new LinkedBlockingQueue<>();
     private static ServerSocket serverSocket;
+
     private final String EXIT_CODE = "EXIT";
 
     @Override
@@ -23,8 +24,12 @@ public class SocketServer implements FrojCallable {
 
     @Override
     public Object call(Interpreter interpreter, List<Object> arguments) {
+        return startSocketServer(arguments.get(0));
+    }
+
+    private Object startSocketServer(Object port) {
         try {
-            Double param = (Double) arguments.get(0);
+            Double param = (Double) port;
             final int PORT = param.intValue();
 
             serverSocket = new ServerSocket(PORT);

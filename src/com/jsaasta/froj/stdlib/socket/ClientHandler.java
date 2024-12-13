@@ -17,7 +17,7 @@ class ClientHandler implements Runnable {
 
             byte[] buffer = new byte[1024];
             int bytesRead = in.read(buffer);
-            if(bytesRead == -1){
+            if (bytesRead == -1) {
                 System.out.println("Client closed the Connection");
             }
 
