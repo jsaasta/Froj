@@ -16,6 +16,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class SocketServer implements FrojCallable {
     protected static BlockingQueue<String> messageQueue = new LinkedBlockingQueue<>();
     private static ServerSocket serverSocket;
+    private final String EXIT_CODE = "EXIT";
     @Override
     public int arity() {
         return 1;
@@ -26,9 +27,8 @@ public class SocketServer implements FrojCallable {
         try {
             Double param = (Double) arguments.get(0);
             int port = param.intValue();
-            serverSocket = new ServerSocket(port);
-            System.out.println("Server started. Listening for incoming connections...");
 
+            serverSocket = new ServerSocket(port);
             while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println("Incoming connection from " + socket.getInetAddress());
@@ -36,13 +36,17 @@ public class SocketServer implements FrojCallable {
                 ClientHandler clientHandler = new ClientHandler(socket);
                 clientHandler.start();
                 String nextMessage = getNextMessage();
+                if(nextMessage.toLowerCase().contentEquals("exit")){
+                    shutdown();
+                    break;
+                }
                 try{
                     return Double.parseDouble(nextMessage);
                 } catch (NumberFormatException e) {
                     return nextMessage;
                 }
             }
-
+            return EXIT_CODE;
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage());
         } catch (InterruptedException e) {
