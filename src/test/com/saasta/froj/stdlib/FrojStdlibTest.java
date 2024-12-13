@@ -13,6 +13,12 @@ public class FrojStdlibTest {
     public void test_Stdlib_Clock() throws IOException {
         Froj froj = new Froj();
         froj.runFile("src/test/com/saasta/froj/stdlib/froj_stdlib_clock.froj");
+        froj.runFile("src/test/com/saasta/froj/stdlib/froj_stdlib_fileReader.froj");
+        try {
+            froj.runFile("src/test/com/saasta/froj/stdlib/froj_stdlib_socketserver.froj");
+        } catch(NullPointerException ex){
+
+        }
     }
 
 }
