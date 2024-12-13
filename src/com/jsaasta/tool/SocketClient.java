@@ -1,10 +1,10 @@
-package com.jsaasta.froj.stdlib.socket;
+package com.jsaasta.tool;
 
 import java.io.*;
 import java.net.ConnectException;
 import java.net.Socket;
 
-public class SocketClient {
+class SocketClient {
 
     public static void main(String[] args) throws IOException {
         while(true) {
@@ -19,7 +19,7 @@ public class SocketClient {
         }
     }
 
-    public static String sendMessage(String message) throws IOException {
+    private static String sendMessage(String message) throws IOException {
         Socket socket = null;
         try {
             socket = new Socket("localhost", 8000);
