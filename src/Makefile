@@ -7,7 +7,7 @@ all: run
 
 compile:
 	rm -f $(FILE_PATH)/*.class
-	javac -d ./ $(FILE_PATH)/*.java $(FILE_PATH)/**/*.java
+	javac -d ./ $(FILE_PATH)/*.java $(FILE_PATH_STDLIB)/*.java
 	jar -cfm $(FILE_NAME_JAR) ./META-INF/MANIFEST.MF $(FILE_PATH)/*.class $(FILE_PATH_STDLIB)/*.class
 	rm -f $(FILE_PATH)/*.class
 	rm -f $(FILE_PATH_STDLIB)/*.class
