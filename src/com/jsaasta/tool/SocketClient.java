@@ -12,6 +12,9 @@ class SocketClient {
             BufferedReader reader = new BufferedReader(input);
 
             String message = reader.readLine();
+            if(message.contentEquals("SHUTMEDOWN")){
+                break;
+            }
             String response = sendMessage(message);
             if (response != null) {
                 System.out.println("Received response from server: " + response);

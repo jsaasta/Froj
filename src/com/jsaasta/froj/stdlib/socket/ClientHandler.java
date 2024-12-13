@@ -1,8 +1,6 @@
 package com.jsaasta.froj.stdlib.socket;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 
 class ClientHandler implements Runnable {
@@ -25,7 +23,6 @@ class ClientHandler implements Runnable {
 
             String message = new String(buffer, 0, bytesRead);
             System.out.println("Received message from client: " + message);
-
 
             out.write(message.getBytes());
 

@@ -28,29 +28,26 @@ public class SocketServer implements FrojCallable {
             final int PORT = param.intValue();
 
             serverSocket = new ServerSocket(PORT);
-            while (true) {
-                Socket socket = serverSocket.accept();
-                System.out.println("Incoming connection from " + socket.getInetAddress());
 
-                ClientHandler clientHandler = new ClientHandler(socket);
-                clientHandler.run();
-                String nextMessage = getNextMessage();
-                if(nextMessage.toLowerCase().contentEquals("exit")){
-                    shutdown();
-                    break;
-                }
-                try{
-                    return Double.parseDouble(nextMessage);
-                } catch (NumberFormatException e) {
-                    return nextMessage;
-                }
+            Socket socket = serverSocket.accept();
+            System.out.println("Incoming connection from " + socket.getInetAddress());
+
+            ClientHandler clientHandler = new ClientHandler(socket);
+            clientHandler.run();
+            String nextMessage = getNextMessage();
+            if (nextMessage.toLowerCase().contentEquals("exit")) {
+                shutdown();
+                return EXIT_CODE;
             }
-            return EXIT_CODE;
-        } catch (IOException e) {
-            throw new RuntimeException(e.getMessage());
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } finally{
+            try {
+                return Double.parseDouble(nextMessage);
+            } catch (NumberFormatException e) {
+                return nextMessage;
+            }
+
+        } catch (IOException | InterruptedException e) {
+            throw new StdlibRuntimeError(e.getMessage());
+        } finally {
             shutdown();
         }
     }
