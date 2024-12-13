@@ -19,16 +19,23 @@ class ClientHandler extends Thread {
 
             byte[] buffer = new byte[1024];
             int bytesRead = in.read(buffer);
+            if(bytesRead == -1){
+                System.out.println("Client closed the Connection");
+            }
             String message = new String(buffer, 0, bytesRead);
             System.out.println("Received message from client: " + message);
 
             String response = "Hello from froj!";
             out.write(response.getBytes());
 
-            // Close the socket
+            SocketServer.messageQueue.put(message);
+
             socket.close();
         } catch (IOException e) {
             System.out.println("Error handling client connection: " + e.getMessage());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
+
 }
