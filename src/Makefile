@@ -6,13 +6,15 @@ all: run
 
 compile:
 	rm -f $(FILE_PATH)/*.class
-	javac -d ./ $(FILE_PATH)/*.java
-	jar -cfm $(FILE_NAME_JAR) ./META-INF/MANIFEST.MF $(FILE_PATH)/*.class
+	javac -d ./ $(FILE_PATH)/*.java $(FILE_PATH)/**/*.java
+	jar -cfm $(FILE_NAME_JAR) ./META-INF/MANIFEST.MF $(FILE_PATH)/*.class $(FILE_PATH)/**/*.class
 	rm -f $(FILE_PATH)/*.class
+	rm -f $(FILE_PATH)/*/*.class
 
 clean:
 	rm -f $(FILE_PATH)/*.class
 	rm -f ./$(FILE_NAME_JAR)
+	rm -f $(FILE_PATH)/**/*.class
 
 javac:
 	javac -d ./ $(FILE_PATH)/*.java

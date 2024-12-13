@@ -23,7 +23,12 @@ public class Input implements FrojCallable {
         System.out.print("> ");
         try {
             String line = reader.readLine();
-            return line;
+            try {
+                return Double.parseDouble(line);
+            } catch(NumberFormatException ex) {
+                return line;
+            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

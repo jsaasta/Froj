@@ -32,3 +32,4 @@ bin/
 /src/*.jar
 /.idea
 hello_world.froj
+testfile.froj
