@@ -17,6 +17,7 @@ public class SocketServer implements FrojCallable {
     protected static BlockingQueue<String> messageQueue = new LinkedBlockingQueue<>();
     private static ServerSocket serverSocket;
     private final String EXIT_CODE = "EXIT";
+
     @Override
     public int arity() {
         return 1;
@@ -26,9 +27,9 @@ public class SocketServer implements FrojCallable {
     public Object call(Interpreter interpreter, List<Object> arguments) {
         try {
             Double param = (Double) arguments.get(0);
-            int port = param.intValue();
+            final int PORT = param.intValue();
 
-            serverSocket = new ServerSocket(port);
+            serverSocket = new ServerSocket(PORT);
             while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println("Incoming connection from " + socket.getInetAddress());
