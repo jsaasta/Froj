@@ -35,7 +35,7 @@ public class SocketServer implements FrojCallable {
                 System.out.println("Incoming connection from " + socket.getInetAddress());
 
                 ClientHandler clientHandler = new ClientHandler(socket);
-                clientHandler.start();
+                clientHandler.run();
                 String nextMessage = getNextMessage();
                 if(nextMessage.toLowerCase().contentEquals("exit")){
                     shutdown();

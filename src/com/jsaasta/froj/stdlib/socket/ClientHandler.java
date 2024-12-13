@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-class ClientHandler extends Thread {
+class ClientHandler implements Runnable {
     private Socket socket;
 
     public ClientHandler(Socket socket) {
